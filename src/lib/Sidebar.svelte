@@ -1,19 +1,23 @@
 <!-- It's a sidebar, what more do you want? -->
 
-<div id="outer">
-    <div id="inner" class="bg-dark">
+<script lang="ts">
+    import SidebarIcons from "./SidebarIcons.svelte";
+</script>
 
+<div class="outer">
+    <div class="inner bg-body-secondary text-dark overflow-scroll">
+        <SidebarIcons>E</SidebarIcons>
     </div>
 </div>
 
 <style>
-    #outer {
+    .outer {
         height: 100vh;
         width: 100vw;
     }
-    #inner {
+    .inner {
         height: 100%;
-        width: 7%;
+        width: 6%;
         padding: 5px;
     }
 </style>
