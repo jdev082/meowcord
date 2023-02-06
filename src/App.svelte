@@ -1,5 +1,7 @@
 <script lang="ts">
     import Sidebar from "./lib/components/Sidebar.svelte";
+    import Home from "./lib/screens/Home.svelte";
+
     import { screen } from "./lib/stores.js";
 </script>
 
@@ -7,8 +9,7 @@
     <Sidebar/>
     <div class="screen m-3">
         {#if $screen === "home"}
-            <h1>Home</h1>
-            <p>You will never go home</p>
+            <Home/>
         {:else}
             <h1>No</h1>
         {/if}
