@@ -1,12 +1,19 @@
 <!-- It's a sidebar, what more do you want? -->
 
-<div>
-    <p>No</p>
+<div id="outer">
+    <div id="inner" class="bg-dark">
+
+    </div>
 </div>
 
 <style>
-    div {
+    #outer {
+        height: 100vh;
+        width: 100vw;
+    }
+    #inner {
         height: 100%;
-        width: 10%;
+        width: 7%;
+        padding: 5px;
     }
 </style>
