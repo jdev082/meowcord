@@ -5,7 +5,7 @@
 </script>
 
 <div class="outer">
-    <div class="inner bg-light text-light overflow-scroll">
+    <div class="inner overflow-scroll">
         <SidebarIcons>A</SidebarIcons>
         <SidebarIcons>B</SidebarIcons>
         <SidebarIcons>C</SidebarIcons>
@@ -33,6 +33,7 @@
         <SidebarIcons>Y</SidebarIcons>
         <SidebarIcons>Z</SidebarIcons>
         <hr class="rounded border-secondary">
+        <SidebarIcons><i class="bi bi-house-door"></i></SidebarIcons>
     </div>
 </div>
 
@@ -45,5 +46,6 @@
         height: 100%;
         width: 5%;
         padding: 5px;
+        background-color: var(--sidebar-bg);
     }
 </style>

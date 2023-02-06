@@ -1,0 +1,24 @@
+body {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+}
+
+h1, h2, h3, h4, h5, h6, b, a .h1, .h2, .h3, .h4, .h5, .h6, .display-1, .display-2, .display-3, .display-4, .display-5, .display-6, .fw-bold {
+    font-weight: 900;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #000;
+        color: var(--bs-light);
+        --sidebar-bg: var(--bs-dark);
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    body {
+        background-color: #fff;
+        color: var(--bs-dark);
+        --sidebar-bg: var(--bs-light);
+    }
+}
