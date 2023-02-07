@@ -1,6 +1,7 @@
 <!-- Buttons for the Sidebar -->
 <script lang="ts">
     export let alt: string;
+    export let onclick: any;
 </script>
 
 <div class="rounded-circle bg-secondary bg-gradient text-light text-center button position-relative fs-2 fw-bold" title={alt}>
