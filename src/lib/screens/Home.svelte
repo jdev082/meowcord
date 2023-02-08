@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { toRelative } from "../relative.js";
+
     async function getHome(page: number = 1) {
         // @ts-ignore
         let home = await fetch(`https://api.meower.org/home?autoget&page=${page}`).then(res => res.json());
@@ -19,10 +21,10 @@
 {:then home} 
     {#each home as post}
         <div class="float-start me-3">
-            <img class="rounded-circle" width="50" height="50" src="https://i.insider.com/602ee9ced3ad27001837f2ac?width=50&height=50">
+            <img class="rounded-circle" width="50" height="50" alt="{post.u}'s profile picture" src="https://i.insider.com/602ee9ced3ad27001837f2ac?width=50&height=50">
         </div>
         <div>
-            <p class="mb-0"><b>{post.u}</b> <span class="text-muted">{new Date(post.t.e * 1000)}</span>
+            <p class="mb-0"><b>{post.u}</b> <span class="text-muted">{toRelative(post.t.e * 1000)}</span>
             <p>{post.p}</p>
         </div>
     {/each}
