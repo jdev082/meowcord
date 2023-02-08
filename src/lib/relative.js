@@ -1,3 +1,7 @@
+/**
+ * @file Time for humans :thumbs_up:
+ */
+
 export function toRelative(timestamp) {
     let msPerMinute = 60 * 1000;
     let msPerHour = msPerMinute * 60;

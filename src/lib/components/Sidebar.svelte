@@ -8,11 +8,9 @@
 
 <div class="outer">
     <div class="inner overflow-scroll">
-        <SidebarIcons alt="This is a useless example" onclick={() => {}}>A</SidebarIcons>
+        <SidebarIcons alt="This is a useless example">A</SidebarIcons>
         <hr class="rounded border-secondary">
-        <SidebarIcons alt="Home" style="cursor: pointer;" onclick={() => {
-            screen.set("home");
-        }}><i class="bi bi-house-door"></i></SidebarIcons>
+        <SidebarIcons alt="Home"><i class="bi bi-house-door"></i></SidebarIcons>
     </div>
 </div>
 
@@ -22,9 +20,10 @@
         width: 100vw;
     }
     .inner {
-        height: 100%;
-        width: 5%;
+        height: 100vh;
+        width: 5vw;
         padding: 5px;
+        position: fixed;
         background-color: var(--sidebar-bg);
     }
 </style>

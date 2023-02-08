@@ -1,10 +1,9 @@
 <!-- Buttons for the Sidebar -->
 <script lang="ts">
     export let alt: string;
-    export let onclick: any;
 </script>
 
-<div class="rounded-circle bg-secondary bg-gradient text-light text-center button position-relative fs-2 fw-bold" title={alt}>
+<div class="rounded-circle bg-secondary bg-gradient text-light text-center button position-relative fs-2 fw-bold" title={alt} style="cursor: pointer;">
     <div class="position-absolute top-50 start-50 translate-middle">
         <slot></slot>
     </div>
@@ -14,6 +13,6 @@
     .button {
         height: 60px;
         width: 60px;
-        margin-bottom: 10px;
+        margin-right: 10px;
     }
 </style>

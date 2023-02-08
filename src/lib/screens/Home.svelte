@@ -1,15 +1,16 @@
+<!-- Home sweet home! -->
 <script lang="ts">
     import { toRelative } from "../relative.js";
 
     async function getHome(page: number = 1) {
         // @ts-ignore
         let home = await fetch(`https://api.meower.org/home?autoget&page=${page}`).then(res => res.json());
-        return home.autoget; 
+        return home.autoget;
     }
 </script>
 
 <svelte:head>
-    <title>Home - Meower Bootstrap</title>
+    <title>Home - Meowcord</title>
 </svelte:head>
 
 {#await getHome()}
@@ -29,7 +30,7 @@
         </div>
     {/each}
 
-    <br>
+    <br><br>
 
     <div class="fixed-bottom input-group">
         <input type="text" class="form-control input" placeholder="Type something...">
@@ -43,12 +44,12 @@
     }
 
     .input {
-        margin-left: 90px;
-        margin-bottom: 10px;
+        margin-left: 5.8vw;
+        margin-bottom: 2vh;
     }
 
     .input-post {
-        margin-right: 10px;
-        margin-bottom: 10px;
+        margin-right: 0.8vw;
+        margin-bottom: 2vh;
     }
 </style>
