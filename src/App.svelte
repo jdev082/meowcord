@@ -5,7 +5,7 @@
     import Login from "./lib/screens/Login.svelte";
     import Logout from "./lib/screens/Logout.svelte";
 
-    import { loggedIn, screen, username, password } from "./lib/stores.js";
+    import { screen } from "./lib/stores.js";
     import Cloudlink from "./lib/cloudlink.js";
 
     const cl = new Cloudlink("wss://server.meower.org/");
