@@ -3,8 +3,6 @@
 <script lang="ts">
     // @ts-nocheck
     import { screen, loggedIn } from "./../stores.js";
-
-    export let cl;
 </script>
 
 <div class="outer">

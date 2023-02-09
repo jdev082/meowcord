@@ -12,7 +12,7 @@
 </script>
 
 <main>
-    <Sidebar cl={cl}/>
+    <Sidebar/>
     <div class="screen m-3">
         {#if $screen === "home"}
             <Home cl={cl}/>
