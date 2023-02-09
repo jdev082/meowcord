@@ -1,7 +1,6 @@
 <!-- Home sweet home! -->
 <script lang="ts">
     // @ts-nocheck
-    // import { toRelative } from "../relative.js";
     import { loggedIn } from "../stores.js";
 
     export let cl;
@@ -50,8 +49,22 @@
                 <img class="rounded-circle" width="50" height="50" alt="{post.u}'s profile picture" src="https://i.insider.com/602ee9ced3ad27001837f2ac?width=50&height=50">
             </div>
             <div>
-                <b>{post.u}</b> <!-- <span class="text-muted">{toRelative(post.t.e * 1000)}</span> -->
-                <p>{post.p}</p>
+                {#if post.u == "Discord"}
+                    <b class="badge text-light" style="background-color: #5865F2;">{post.p.split(": ")[0]}</b>
+                    <p>{post.p.split(": ")[1]}</p>
+                {:else if post.u == "Webhooks"}
+                    <b class="badge bg-warning text-light">{post.p.split(": ")[0]}</b>
+                    <p>{post.p.split(": ")[1]}</p>
+                {:else if post.u == "gcbridge"}
+                    <b class="badge text-light" style="background-color: #ffa200;">{post.p.split(": ")[0]}</b>
+                    <p>{post.p.split(": ")[1]}</p>
+                {:else if post.u == "Revower"}
+                    <b class="badge bg-danger text-light">{post.p.split(": ")[0]}</b>
+                    <p>{post.p.split(": ")[1]}</p>
+                {:else}
+                    <b>{post.u}</b>
+                    <p>{post.p}</p>
+                {/if}
             </div>
         {/each}
     </div>
