@@ -23,8 +23,25 @@
             post.append(pfp);
 
             post_username.classList.add("mb-0");
-            post_username.innerHTML = `<b>${data.val.u}</b>`;
-            post_content.innerText = data.val.p;
+
+            switch (data.val.u) {
+                case "Discord":
+                    post_username.innerHTML = `<b class="badge text-light" style="background-color: #5865F2;">${data.val.p.split(": ").splice(0,)[0]}</b>`;
+                    post_content.innerHTML = `<p>{data.val.p.split(": ")[1]}</p>`;
+                case "Webhooks":
+                    post_username.innerHTML = `<b class="badge bg-warning text-light">${data.val.p.split(": ")[0]}</b>`;
+                    post_content.innerHTML = `<p>{data.val.p.split(": ")[1]}</p>`;
+                case "gcbridge":
+                    post_username.innerHTML = `<b class="badge text-light" style="background-color: #ffa200;">${data.val.p.split(": ")[0]}</b>`;
+                    post_content.innerHTML = `<p>{data.val.p.split(": ")[1]}</p>`;
+                case "Revower":
+                    post_username.innerHTML = `<b class="badge bg-danger text-light">${data.val.p.split(": ")[0]}</b>`;
+                    post_content.innerHTML = `<p>{data.val.p.split(": ")[1]}</p>`;
+                default:
+                    post_username.innerHTML = `<b>${data.val.u}</b>`;
+                    post_content.innerText = data.val.p;
+            }
+
             post.append(post_username);
             post.append(post_content);
             posts.prepend(post);
