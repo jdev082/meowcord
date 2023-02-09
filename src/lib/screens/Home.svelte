@@ -2,7 +2,7 @@
 <script lang="ts">
     // @ts-nocheck
     // import { toRelative } from "../relative.js";
-    import { loggedIn, missedPosts } from "../stores.js";
+    import { loggedIn } from "../stores.js";
 
     export let cl;
 
