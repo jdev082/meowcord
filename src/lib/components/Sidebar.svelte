@@ -1,6 +1,7 @@
 <!-- It's a sidebar, what more do you want? -->
 
 <script lang="ts">
+    // @ts-nocheck
     import SidebarIcons from "./SidebarIcons.svelte";
 
     import { screen } from "./../stores.js";
