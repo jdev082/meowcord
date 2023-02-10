@@ -6,14 +6,17 @@
     import Logout from "./lib/screens/Logout.svelte";
     import Signup from "./lib/screens/Signup.svelte";
 
-    import { loggedIn, screen } from "./lib/stores.js";
+    import { loggedIn, screen, username, password } from "./lib/stores.js";
     import Cloudlink from "./lib/cloudlink.js";
 
     const cl = new Cloudlink("wss://server.meower.org/");
 
     cl.on("disconnected", () => {
-        loggedIn.set(false);
         cl.connect("wss://server.meower.org/");
+
+        if ($loggedIn) {
+            cl.send({"cmd": "direct", "val": {"cmd": "authpswd", "val": {"username": $username, "pswd": $password}}});
+        }
     });
 </script>
 
