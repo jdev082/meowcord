@@ -1,7 +1,7 @@
 <!-- Makes you login to Meower! -->
 <script lang="ts">
     // @ts-nocheck
-    import { loggedIn, screen } from "../stores.js";
+    import { loggedIn, screen, username } from "../stores.js";
 
     export let cl;
 </script>
@@ -29,7 +29,11 @@
             // @ts-nocheck
             cl.send({"cmd": "direct", "val": {"cmd": "authpswd", "val": {"username": document.getElementById("username").value, "pswd": document.getElementById("password").value}}});
             loggedIn.set(true);
+            username.set(document.getElementById("username").value);
             screen.set("home");
-        }}>Login</button>
+        }}>Log in</button>
+        <button class="btn btn-secondary" id="login-button" on:click={() => {
+            screen.set("signup");
+        }}>Sign up</button>
     </div>
 </div>

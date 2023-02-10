@@ -1,7 +1,7 @@
 <!-- Home sweet home! -->
 <script lang="ts">
     // @ts-nocheck
-    import { loggedIn } from "../stores.js";
+    import { loggedIn, username } from "../stores.js";
 
     export let cl;
 
@@ -27,16 +27,16 @@
             switch (data.val.u) {
                 case "Discord":
                     post_username.innerHTML = `<b class="badge text-light" style="background-color: #5865F2;">${data.val.p.split(": ").splice(0,)[0]}</b>`;
-                    post_content.innerHTML = `<p>{data.val.p.split(": ")[1]}</p>`;
+                    post_content.innerHTML = `<p>${data.val.p.split(": ")[1]}</p>`;
                 case "Webhooks":
                     post_username.innerHTML = `<b class="badge bg-warning text-light">${data.val.p.split(": ")[0]}</b>`;
-                    post_content.innerHTML = `<p>{data.val.p.split(": ")[1]}</p>`;
+                    post_content.innerHTML = `<p>${data.val.p.split(": ")[1]}</p>`;
                 case "gcbridge":
                     post_username.innerHTML = `<b class="badge text-light" style="background-color: #ffa200;">${data.val.p.split(": ")[0]}</b>`;
-                    post_content.innerHTML = `<p>{data.val.p.split(": ")[1]}</p>`;
+                    post_content.innerHTML = `<p>${data.val.p.split(": ")[1]}</p>`;
                 case "Revower":
                     post_username.innerHTML = `<b class="badge bg-danger text-light">${data.val.p.split(": ")[0]}</b>`;
-                    post_content.innerHTML = `<p>{data.val.p.split(": ")[1]}</p>`;
+                    post_content.innerHTML = `<p>${data.val.p.split(": ")[1]}</p>`;
                 default:
                     post_username.innerHTML = `<b>${data.val.u}</b>`;
                     post_content.innerText = data.val.p;
@@ -90,7 +90,8 @@
 
     <div class="fixed-bottom input-group">
         {#if $loggedIn}
-            <input type="text" class="form-control" id="input" placeholder="Type something..." on:keypress={(event) => {
+            <input type="text" class="form-control" id="input" placeholder="Type something..." autocomplete="false"
+            maxlength="360" on:keypress={(event) => {
                 if (event.key == "Enter") {
                     // @ts-nocheck
                     document.getElementById("input-post").click();
@@ -105,6 +106,11 @@
             <input type="text" class="form-control" id="input" placeholder="You cannot post because you aren't logged in" disabled>
             <button class="btn btn-primary" id="input-post" disabled>Post</button>
         {/if}
+    </div>
+{:catch error}
+    <div class="position-absolute top-50 start-50 translate-middle text-center justify-content-center">
+        <h1 class="display-2">An error occured</h1>
+        <p>Please try refrshing the tab, or try again later.</p>
     </div>
 {/await}
 

@@ -9,16 +9,14 @@ h1, h2, h3, h4, h5, h6, b, a .h1, .h2, .h3, .h4, .h5, .h6, .display-1, .display-
 
 @media (prefers-color-scheme: dark) {
     body {
-        background-color: #000;
+        --sidebar-bg: var(--bs-tertiary-bg);
         color: var(--bs-light);
-        --sidebar-bg: var(--bs-dark);
     }
 }
 
 @media (prefers-color-scheme: light) {
     body {
-        background-color: #fff;
+        --sidebar-bg: var(--bs-secondary-bg);
         color: var(--bs-dark);
-        --sidebar-bg: var(--bs-light);
     }
 }
