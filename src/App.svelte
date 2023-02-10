@@ -10,6 +10,10 @@
     import Cloudlink from "./lib/cloudlink.js";
 
     const cl = new Cloudlink("wss://server.meower.org/");
+
+    cl.on("disconnected", () => {
+        cl.connect("wss://server.meower.org/");
+    });
 </script>
 
 <main>

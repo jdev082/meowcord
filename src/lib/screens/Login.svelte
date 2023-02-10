@@ -32,7 +32,7 @@
             username.set(document.getElementById("username").value);
             screen.set("home");
         }}>Log in</button>
-        <button class="btn btn-secondary" id="login-button" on:click={() => {
+        <button class="btn btn-secondary" on:click={() => {
             screen.set("signup");
         }}>Sign up</button>
     </div>
