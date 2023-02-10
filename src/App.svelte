@@ -31,6 +31,15 @@
             <Logout cl={cl}/>
         {:else if $screen === "signup"}
             <Signup cl={cl}/>
+        {:else}
+            <div class="position-absolute top-50 start-50 translate-middle text-center justify-content-center">
+                <h1 class="display-2">Invalid screen</h1>
+                <p>You'd might want to create a new GitHub issue if this persists</p>
+                <div class="vstack gap-3">
+                    <button class="btn btn-primary" on:click={() => { screen.set("home"); }}>Go back to Home</button>
+                    <a class="btn btn-secondary" href="https://github.com/mdwalters/meowcord/issues/new">Create new GitHub issue</a>
+                </div>
+            </div>
         {/if}
     </div>
 </main>
