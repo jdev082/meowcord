@@ -5,3 +5,6 @@ A Meower client inspired by Discord
 npm install
 npm run dev
 ```
+## Features
+- A Discord-like UI
+- Auto-reconnecting

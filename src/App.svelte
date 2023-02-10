@@ -6,12 +6,13 @@
     import Logout from "./lib/screens/Logout.svelte";
     import Signup from "./lib/screens/Signup.svelte";
 
-    import { screen } from "./lib/stores.js";
+    import { loggedIn, screen } from "./lib/stores.js";
     import Cloudlink from "./lib/cloudlink.js";
 
     const cl = new Cloudlink("wss://server.meower.org/");
 
     cl.on("disconnected", () => {
+        loggedIn.set(false);
         cl.connect("wss://server.meower.org/");
     });
 </script>
