@@ -33,18 +33,23 @@
                 case "Discord":
                     post_username.innerHTML = `<b class="badge text-light" style="background-color: #5865F2;">${data.val.p.split(": ")[0]}</b>`;
                     post_content.innerText = data.val.p.slice(data.val.p.indexOf(": ") + 1);
+                    break;
                 case "Webhooks":
                     post_username.innerHTML = `<b class="badge bg-warning text-light">${data.val.p.split(": ")[0]}</b>`;
                     post_content.innerText = data.val.p.slice(data.val.p.indexOf(": ") + 1);
+                    break;
                 case "gcbridge":
                     post_username.innerHTML = `<b class="badge text-light" style="background-color: #ffa200;">${data.val.p.split(": ")[0]}</b>`;
                     post_content.innerText = data.val.p.slice(data.val.p.indexOf(": ") + 1);
+                    break;
                 case "Revower":
                     post_username.innerHTML = `<b class="badge bg-danger text-light">${data.val.p.split(": ")[0]}</b>`;
                     post_content.innerText = data.val.p.slice(data.val.p.indexOf(": ") + 1);
+                    break;
                 default:
                     post_username.innerHTML = `<b>${data.val.u}</b>`;
                     post_content.innerText = data.val.p;
+                    break;
             }
 
             post.append(post_username);
