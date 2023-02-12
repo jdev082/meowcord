@@ -5,6 +5,7 @@
     import Login from "./lib/screens/Login.svelte";
     import Logout from "./lib/screens/Logout.svelte";
     import Signup from "./lib/screens/Signup.svelte";
+    import Splash from "./lib/screens/Splash.svelte";
 
     import { loggedIn, screen, username, password } from "./lib/stores.js";
     import Cloudlink from "./lib/cloudlink.js";
@@ -19,6 +20,8 @@
         }
     });
 </script>
+
+<Splash/>
 
 <main>
     <Sidebar/>
@@ -47,7 +50,8 @@
 <style>
     main {
         display: grid;
-        grid-template-columns: 5vw 90vw auto;
+        grid-template-columns: 5% 95% auto;
         grid-template-rows: auto;
+        z-index: -1;
     }
 </style>

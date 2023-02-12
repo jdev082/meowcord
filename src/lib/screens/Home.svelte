@@ -26,7 +26,7 @@
 
             switch (data.val.u) {
                 case "Discord":
-                    post_username.innerHTML = `<b class="badge text-light" style="background-color: #5865F2;">${data.val.p.split(": ").splice(0,)[0]}</b>`;
+                    post_username.innerHTML = `<b class="badge text-light" style="background-color: #5865F2;">${data.val.p.split(": ")[0]}</b>`;
                     post_content.innerHTML = `<p>${data.val.p.split(": ")[1]}</p>`;
                 case "Webhooks":
                     post_username.innerHTML = `<b class="badge bg-warning text-light">${data.val.p.split(": ")[0]}</b>`;
@@ -111,6 +111,7 @@
     <div class="position-absolute top-50 start-50 translate-middle text-center justify-content-center">
         <h1 class="display-2">An error occured</h1>
         <p>Please try refrshing the tab, or try again later.</p>
+        <code>{error}</code>
     </div>
 {/await}
 
