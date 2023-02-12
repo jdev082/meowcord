@@ -5,12 +5,17 @@
 
     export let cl;
 
-    async function getHome(page: number = 1) {
+    async function getHome(page: number = 1): any[] {
         let home = await fetch(`https://api.meower.org/home?autoget&page=${page}`).then(res => res.json());
         return home.autoget;
     }
 
-    cl.on("direct", (data) => {
+    async function getProfilePicture(user: string): string {
+        let user_data = await fetch(`https://api.meower.org/users/${user}`).then(res => res.json());
+        return `./pfp/icon_${user_data.pfp_data - 1}.svg`;
+    }
+
+    cl.on("direct", async (data) => {
         if (data.val.post_origin == "home" && data.val.type == 1) {
             let pfp = document.createElement("div");
             let posts = document.getElementById("home-posts");
@@ -19,7 +24,7 @@
             let post_content = document.createElement("p");
 
             pfp.classList.add("float-start", "me-3");
-            pfp.innerHTML = `<img class="rounded-circle" width="50" height="50" alt="{post.u}'s profile picture" src="https://i.insider.com/602ee9ced3ad27001837f2ac?width=50&height=50">`;
+            pfp.innerHTML = `<img class="rounded-circle" width="50" height="50" alt="${post.u}'s profile picture" src="${await getProfilePicture(post.u)}">`;
             post.append(pfp);
 
             post_username.classList.add("mb-0");
@@ -62,23 +67,55 @@
 {:then home}
     <div id="home-posts">
         {#each home as post}
-            <div class="float-start me-3">
-                <img class="rounded-circle" width="50" height="50" alt="{post.u}'s profile picture" src="https://i.insider.com/602ee9ced3ad27001837f2ac?width=50&height=50">
-            </div>
             <div>
                 {#if post.u == "Discord"}
+                    <div class="float-start me-3">
+                        {#await getProfilePicture(post.u.split(": ")[0])}
+                            <div class="rounded-circle bg-light" style="width: 50; height: 50;"></div>
+                        {:then pfp}
+                            <img class="rounded-circle bg-light" width="50" height="50" alt="{post.u}'s profile picture" src={pfp} onerror="this.src='./pfp/icon_err.svg'">
+                        {/await}
+                    </div>
                     <b class="badge text-light" style="background-color: #5865F2;">{post.p.split(": ")[0]}</b>
                     <p>{post.p.slice(post.p.indexOf(": ") + 1)}</p>
                 {:else if post.u == "Webhooks"}
+                    <div class="float-start me-3">
+                        {#await getProfilePicture(post.u.split(": ")[0])}
+                            <div class="rounded-circle bg-light" style="width: 50; height: 50;"></div>
+                        {:then pfp}
+                            <img class="rounded-circle bg-light" width="50" height="50" alt="{post.u}'s profile picture" src={pfp} onerror="this.src='./pfp/icon_err.svg'">
+                        {/await}
+                    </div>
                     <b class="badge bg-warning text-light">{post.p.split(": ")[0]}</b>
                     <p>{post.p.slice(post.p.indexOf(": ") + 1)}</p>
                 {:else if post.u == "gcbridge"}
+                    <div class="float-start me-3">
+                        {#await getProfilePicture(post.u.split(": ")[0])}
+                            <div class="rounded-circle bg-light" style="width: 50; height: 50;"></div>
+                        {:then pfp}
+                            <img class="rounded-circle bg-light" width="50" height="50" alt="{post.u}'s profile picture" src={pfp} onerror="this.src='./pfp/icon_err.svg'">
+                        {/await}
+                    </div>
                     <b class="badge text-light" style="background-color: #ffa200;">{post.p.split(": ")[0]}</b>
                     <p>{post.p.slice(post.p.indexOf(": ") + 1)}</p>
                 {:else if post.u == "Revower"}
+                    <div class="float-start me-3">
+                        {#await getProfilePicture(post.u.split(": ")[0])}
+                            <div class="rounded-circle bg-light" style="width: 50; height: 50;"></div>
+                        {:then pfp}
+                            <img class="rounded-circle bg-light" width="50" height="50" alt="{post.u}'s profile picture" src={pfp} onerror="this.src='./pfp/icon_err.svg'">
+                        {/await}
+                    </div>
                     <b class="badge bg-danger text-light">{post.p.split(": ")[0]}</b>
                     <p>{post.p.slice(post.p.indexOf(": ") + 1)}</p>
                 {:else}
+                    <div class="float-start me-3">
+                        {#await getProfilePicture(post.u)}
+                            <div class="rounded-circle bg-light" style="width: 50; height: 50;"></div>
+                        {:then pfp}
+                            <img class="rounded-circle bg-light" width="50" height="50" alt="{post.u}'s profile picture" src={pfp} onerror="this.src='./pfp/icon_err.svg'">
+                        {/await}
+                    </div>
                     <b>{post.u}</b>
                     <p>{post.p}</p>
                 {/if}
