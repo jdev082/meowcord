@@ -27,16 +27,16 @@
             switch (data.val.u) {
                 case "Discord":
                     post_username.innerHTML = `<b class="badge text-light" style="background-color: #5865F2;">${data.val.p.split(": ")[0]}</b>`;
-                    post_content.innerHTML = `<p>${data.val.p.split(": ")[1]}</p>`;
+                    post_content.innerText = data.val.p.slice(data.val.p.indexOf(": ") + 1);
                 case "Webhooks":
                     post_username.innerHTML = `<b class="badge bg-warning text-light">${data.val.p.split(": ")[0]}</b>`;
-                    post_content.innerHTML = `<p>${data.val.p.split(": ")[1]}</p>`;
+                    post_content.innerText = data.val.p.slice(data.val.p.indexOf(": ") + 1);
                 case "gcbridge":
                     post_username.innerHTML = `<b class="badge text-light" style="background-color: #ffa200;">${data.val.p.split(": ")[0]}</b>`;
-                    post_content.innerHTML = `<p>${data.val.p.split(": ")[1]}</p>`;
+                    post_content.innerText = data.val.p.slice(data.val.p.indexOf(": ") + 1);
                 case "Revower":
                     post_username.innerHTML = `<b class="badge bg-danger text-light">${data.val.p.split(": ")[0]}</b>`;
-                    post_content.innerHTML = `<p>${data.val.p.split(": ")[1]}</p>`;
+                    post_content.innerText = data.val.p.slice(data.val.p.indexOf(": ") + 1);
                 default:
                     post_username.innerHTML = `<b>${data.val.u}</b>`;
                     post_content.innerText = data.val.p;
@@ -68,16 +68,16 @@
             <div>
                 {#if post.u == "Discord"}
                     <b class="badge text-light" style="background-color: #5865F2;">{post.p.split(": ")[0]}</b>
-                    <p>{post.p.split(": ")[1]}</p>
+                    <p>{post.p.slice(post.p.indexOf(": ") + 1)}</p>
                 {:else if post.u == "Webhooks"}
                     <b class="badge bg-warning text-light">{post.p.split(": ")[0]}</b>
-                    <p>{post.p.split(": ")[1]}</p>
+                    <p>{post.p.slice(post.p.indexOf(": ") + 1)}</p>
                 {:else if post.u == "gcbridge"}
                     <b class="badge text-light" style="background-color: #ffa200;">{post.p.split(": ")[0]}</b>
-                    <p>{post.p.split(": ")[1]}</p>
+                    <p>{post.p.slice(post.p.indexOf(": ") + 1)}</p>
                 {:else if post.u == "Revower"}
                     <b class="badge bg-danger text-light">{post.p.split(": ")[0]}</b>
-                    <p>{post.p.split(": ")[1]}</p>
+                    <p>{post.p.slice(post.p.indexOf(": ") + 1)}</p>
                 {:else}
                     <b>{post.u}</b>
                     <p>{post.p}</p>

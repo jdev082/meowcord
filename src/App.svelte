@@ -5,7 +5,7 @@
     import Login from "./lib/screens/Login.svelte";
     import Logout from "./lib/screens/Logout.svelte";
     import Signup from "./lib/screens/Signup.svelte";
-    import Splash from "./lib/screens/Splash.svelte";
+    // import Splash from "./lib/screens/Splash.svelte";
 
     import { loggedIn, screen, username, password } from "./lib/stores.js";
     import Cloudlink from "./lib/cloudlink.js";
@@ -21,7 +21,7 @@
     });
 </script>
 
-<Splash/>
+<!-- <Splash/> -->
 
 <main>
     <Sidebar/>

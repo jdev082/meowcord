@@ -1,3 +1,4 @@
+<!-- A cool splash screen! Still deciding if we should keep this or not... -->
 <script lang="ts">
     import { blur, scale } from "svelte/transition";
 
