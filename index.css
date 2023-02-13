@@ -3,13 +3,14 @@ body {
     font-weight: 500;
 }
 
-h1, h2, h3, h4, h5, h6, b, a .h1, .h2, .h3, .h4, .h5, .h6, .display-1, .display-2, .display-3, .display-4, .display-5, .display-6, .fw-bold {
+h1, h2, h3, h4, h5, h6, b, a, .h1, .h2, .h3, .h4, .h5, .h6, .display-1, .display-2, .display-3, .display-4, .display-5, .display-6, .fw-bold {
     font-weight: 900;
 }
 
 @media (prefers-color-scheme: dark) {
     body {
         --sidebar-bg: var(--bs-tertiary-bg);
+        --dark-light: var(--bs-light); 
         color: var(--bs-light);
         background-color: var(--bs-dark);
     }
@@ -18,6 +19,7 @@ h1, h2, h3, h4, h5, h6, b, a .h1, .h2, .h3, .h4, .h5, .h6, .display-1, .display-
 @media (prefers-color-scheme: light) {
     body {
         --sidebar-bg: var(--bs-secondary-bg);
+        --dark-light: var(--bs-dark);
         color: var(--bs-dark);
         background-color: var(--bs-light);
     }
