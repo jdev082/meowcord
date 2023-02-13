@@ -1,5 +1,5 @@
 # Meowcord
-A Meower client inspired by Discord
+A Meower client that aims to have a Discord-like UI
 ## Running
 ```bash
 npm install
