@@ -183,8 +183,12 @@
 {:catch error}
     <div class="position-absolute top-50 start-50 translate-middle text-center justify-content-center">
         <h1 class="display-2">An error occured</h1>
-        <p>Please try refrshing the tab, or try again later.</p>
+        <p>Please try refrshing the tab, or try again later. If this issue persists, please create a new GitHub issue.</p>
         <code>{error}</code>
+        <div class="vstack gap-3">
+            <button class="btn btn-primary" on:click={() => { window.location.refresh(); }}>Refresh</button>
+            <a class="btn btn-secondary" href="https://github.com/mdwalters/meowcord/issues/new">Create new GitHub issue</a>
+        </div>
     </div>
 {/await}
 
