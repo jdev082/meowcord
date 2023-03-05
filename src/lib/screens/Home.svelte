@@ -24,7 +24,7 @@
             let post_content = document.createElement("p");
 
             pfp.classList.add("float-start", "me-3");
-            pfp.innerHTML = `<img class="rounded-circle bg-light" width="50" height="50" alt="${post.u}'s profile picture" src="${await getProfilePicture(post.u)}">`;
+            pfp.innerHTML = `<img class="rounded-circle bg-light" width="50" height="50" alt="${post.u}'s profile picture" src="${await getProfilePicture(post.u)}" onerror="this.src='./pfp/icon_err.svg'">`;
             post.append(pfp);
 
             post_username.classList.add("mb-0");
@@ -96,7 +96,7 @@
                 {#if post.u == "Discord"}
                     <div class="float-start me-3">
                         {#await getProfilePicture(post.p.split(": ")[0])}
-                            <div class="rounded-circle bg-light" style="width: 50; height: 50;"></div>
+                            <div class="rounded-circle bg-light" style="width: 50px; height: 50px;"></div>
                         {:then pfp}
                             <div class="rounded-circle bg-light">
                                 <img width="50" height="50" alt="{post.u}'s profile picture" src={pfp} onerror="this.src='./pfp/icon_err.svg'">
