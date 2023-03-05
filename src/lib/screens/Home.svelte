@@ -5,7 +5,7 @@
 
     export let cl;
 
-    async function getHome(page: number = 1): any[] {
+    async function getHome(page: number = 1): object[] {
         let home = await fetch(`https://api.meower.org/home?autoget&page=${page}`).then(res => res.json());
         return home.autoget;
     }
@@ -90,12 +90,6 @@
         </div>
     </div>
 {:then home}
-    <div class="chat-info fs-5 fw-bold text-wrap">
-        <p class="m-0 ps-3">Home <span class="text-muted">This is the place where everyone posts</span></p>
-    </div>
-
-    <br>
-
     <div id="home-posts">
         {#each home as post}
             <div>
@@ -106,9 +100,6 @@
                         {:then pfp}
                             <div class="rounded-circle bg-light">
                                 <img width="50" height="50" alt="{post.u}'s profile picture" src={pfp} onerror="this.src='./pfp/icon_err.svg'">
-                                <span class="position-absolute top-100 start-100 translate-middle badge rounded-pill bg-success p-2">
-                                    <span></span>
-                                </span>
                             </div>
                         {/await}
                     </div>
@@ -205,14 +196,5 @@
     #input-post {
         margin-right: 0.8vw;
         margin-bottom: 2vh;
-    }
-
-    .chat-info {
-        background-color: var(--sidebar-bg);
-        position: fixed;
-        top: 0;
-        width: 100vw;
-        margin-right: 10vw;
-        margin-left: -1.2vw;
     }
 </style>
