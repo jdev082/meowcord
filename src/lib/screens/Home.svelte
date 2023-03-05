@@ -106,13 +106,6 @@
                     <b class="badge text-light" style="background-color: #5865F2;">{post.p.split(": ")[0]}</b>
                     <p>{post.p.slice(post.p.indexOf(": ") + 1)}</p>
                 {:else if post.u == "Webhooks"}
-                    <div class="float-start me-3">
-                        {#await getProfilePicture(post.p.split(": ")[0])}
-                            <div class="rounded-circle bg-light" style="width: 50; height: 50;"></div>
-                        {:then pfp}
-                            <img class="rounded-circle bg-light" width="50" height="50" alt="{post.u}'s profile picture" src={pfp} onerror="this.src='./pfp/icon_err.svg'">
-                        {/await}
-                    </div>
                     <b class="badge bg-warning text-light">{post.p.split(": ")[0]}</b>
                     <p>{post.p.slice(post.p.indexOf(": ") + 1)}</p>
                 {:else if post.u == "gcbridge"}
