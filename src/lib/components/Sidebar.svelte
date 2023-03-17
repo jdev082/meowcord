@@ -41,20 +41,25 @@
 </div>
 
 <style>
-    .outer {
+    /* .outer {
         height: 100vh;
         width: 100vw;
-    }
+    } */
     .inner {
         height: 100vh;
         width: 5vw;
         padding: 5px;
         position: fixed;
         background-color: var(--sidebar-bg);
+        display: flex;
+		flex-direction: column;
+		flex-wrap: nowrap;
+		gap: 0.5em;
+		box-sizing: border-box;
+		user-select: none;
     }
     .button {
         height: 60px;
         width: 60px;
-        margin-bottom: 10px;
     }
 </style>

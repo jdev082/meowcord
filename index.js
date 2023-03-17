@@ -1,5 +1,3 @@
-// Unused, because it is buggy
-
 if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
     document.getElementById("body").setAttribute("data-bs-theme", "dark");
 } else {

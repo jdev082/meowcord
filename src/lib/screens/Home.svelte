@@ -24,52 +24,42 @@
             let post_content = document.createElement("p");
 
             pfp.classList.add("float-start", "me-3");
-            pfp.innerHTML = `<img class="rounded-circle bg-light" width="50" height="50" alt="${post.u}'s profile picture" src="${await getProfilePicture(post.u)}" onerror="this.src='./pfp/icon_err.svg'">`;
+    
             post.append(pfp);
 
             post_username.classList.add("mb-0");
 
-            switch (data.val.u) {
-                case "Discord":
-                    post_username.innerHTML = `<b class="badge text-light" style="background-color: #5865F2;">${data.val.p.split(": ")[0]}</b>`;
-                    if (data.val.p.slice(data.val.p.indexOf(": ") + 1) == "") {
-                        post_content.innerHTML = "<br>";
-                    } else {
-                        post_content.innerText = data.val.p.slice(data.val.p.indexOf(": ") + 1);
-                    }
-                    break;
-                case "Webhooks":
-                    post_username.innerHTML = `<b class="badge bg-warning text-light">${data.val.p.split(": ")[0]}</b>`;
-                    if (data.val.p.slice(data.val.p.indexOf(": ") + 1) == "") {
-                        post_content.innerHTML = "<br>";
-                    } else {
-                        post_content.innerText = data.val.p.slice(data.val.p.indexOf(": ") + 1);
-                    }
-                    break;
-                case "gcbridge":
-                    post_username.innerHTML = `<b class="badge text-light" style="background-color: #ffa200;">${data.val.p.split(": ")[0]}</b>`;
-                    if (data.val.p.slice(data.val.p.indexOf(": ") + 1) == "") {
-                        post_content.innerHTML = "<br>";
-                    } else {
-                        post_content.innerText = data.val.p.slice(data.val.p.indexOf(": ") + 1);
-                    }
-                    break;
-                case "Revower":
-                    post_username.innerHTML = `<b class="badge bg-danger text-light">${data.val.p.split(": ")[0]}</b>`;
-                    if (data.val.p.slice(data.val.p.indexOf(": ") + 1) == "") {
-                        post_content.innerHTML = "<br>";
-                    } else {
-                        post_content.innerText = data.val.p.slice(data.val.p.indexOf(": ") + 1);
-                    }
-                    break;
-                default:
-                    post_username.innerHTML = `<b>${data.val.u}</b>`;
-                    if (data.val.p.slice(data.val.p.indexOf(": ") + 1) == "") {
-                        post_content.innerHTML = "<br>";
-                    } else {
-                        post_content.innerText = data.val.p.slice(data.val.p.indexOf(": ") + 1);
-                    }
-                    break;
+            if (data.val.u == "Discord") {
+                pfp.innerHTML = `<img class="rounded-circle bg-light" width="50" height="50" alt="${data.val.p.split(": ")[0]}'s profile picture" src="${await getProfilePicture(data.val.p.split(": ")[0])}" onerror="this.src='./pfp/icon_err.svg'">`;
+                post_username.innerHTML = `<b class="badge text-light" style="background-color: #5865F2;">${data.val.p.split(": ")[0]}</b>`;
+                if (data.val.p.slice(data.val.p.indexOf(": ") + 1) == "") {
+                    post_content.innerHTML = "<br>";
+                } else {
+                    post_content.innerText = data.val.p.slice(data.val.p.indexOf(": ") + 1);
+                }
+            } else if (data.val.u == "Webhooks") {
+                post_username.innerHTML = `<b class="badge bg-warning text-light">${data.val.p.split(": ")[0]}</b>`;
+                if (data.val.p.slice(data.val.p.indexOf(": ") + 1) == "") {
+                    post_content.innerHTML = "<br>";
+                } else {
+                    post_content.innerText = data.val.p.slice(data.val.p.indexOf(": ") + 1);
+                }
+            } else if (data.val.u == "Revower" || data.val.u == "Revower") {
+                pfp.innerHTML = `<img class="rounded-circle bg-light" width="50" height="50" alt="${data.val.p.split(": ")[0]}'s profile picture" src="${await getProfilePicture(data.val.p.split(": ")[0])}" onerror="this.src='./pfp/icon_err.svg'">`;
+                post_username.innerHTML = `<b class="badge bg-danger text-light">${data.val.p.split(": ")[0]}</b>`;
+                if (data.val.p.slice(data.val.p.indexOf(": ") + 1) == "") {
+                    post_content.innerHTML = "<br>";
+                } else {
+                    post_content.innerText = data.val.p.slice(data.val.p.indexOf(": ") + 1);
+                }
+            } else {
+                pfp.innerHTML = `<img class="rounded-circle bg-light" width="50" height="50" alt="${data.val.u}'s profile picture" src="${await getProfilePicture(data.val.u)}" onerror="this.src='./pfp/icon_err.svg'">`;
+                post_username.innerHTML = `<b>${data.val.u}</b>`;
+                if (data.val.p == "") {
+                    post_content.innerHTML = "<br>";
+                } else {
+                    post_content.innerText = data.val.p;
+                }
             }
 
             post.append(post_username);
@@ -108,16 +98,6 @@
                 {:else if post.u == "Webhooks"}
                     <b class="badge bg-warning text-light">{post.p.split(": ")[0]}</b>
                     <p>{post.p.slice(post.p.indexOf(": ") + 1)}</p>
-                {:else if post.u == "gcbridge"}
-                    <div class="float-start me-3">
-                        {#await getProfilePicture(post.u.split(": ")[0])}
-                            <div class="rounded-circle bg-light" style="width: 50; height: 50;"></div>
-                        {:then pfp}
-                            <img class="rounded-circle bg-light" width="50" height="50" alt="{post.u}'s profile picture" src={pfp} onerror="this.src='./pfp/icon_err.svg'">
-                        {/await}
-                    </div>
-                    <b class="badge text-light" style="background-color: #ffa200;">{post.p.split(": ")[0]}</b>
-                    <p>{post.p.slice(post.p.indexOf(": ") + 1)}</p>
                 {:else if post.u == "Revower"}
                     <div class="float-start me-3">
                         {#await getProfilePicture(post.p.split(": ")[0])}
@@ -147,21 +127,26 @@
 
     <div class="fixed-bottom input-group">
         {#if $loggedIn}
-            <input type="text" class="form-control" id="input" placeholder="Type something..." autocomplete="false"
-            maxlength="360" on:keypress={(event) => {
-                if (event.key == "Enter") {
-                    // @ts-nocheck
-                    document.getElementById("input-post").click();
-                };
-            }}>
+            <input
+                type="text"
+                class="form-control"
+                id="input"
+                placeholder="Type something..."
+                autocomplete={false}
+                maxlength=360
+                on:keypress={(event) => {
+                    if (event.key == "Enter") {
+                        document.getElementById("input-post").click();
+                    }
+                }}
+                on:input={() => {
+                    cl.send({ "cmd": "direct", "val": { "cmd": "set_chat_state", "val": { "chatid": "livechat", "state": 101 } } });
+                }}
+            >
             <button class="btn btn-primary" id="input-post" on:click={() => {
-                // @ts-nocheck
                 cl.send({"cmd": "direct", "val": {"cmd": "post_home", "val": document.getElementById("input").value}})
                 document.getElementById("input").value = "";
             }}>Post</button>
-        {:else}
-            <input type="text" class="form-control" id="input" placeholder="You cannot post because you aren't logged in" disabled>
-            <button class="btn btn-primary" id="input-post" disabled>Post</button>
         {/if}
     </div>
 {:catch error}
