@@ -156,7 +156,7 @@
         <code>{error}</code>
         <div class="vstack gap-3">
             <button class="btn btn-primary" on:click={() => { window.location.refresh(); }}>Refresh</button>
-            <a class="btn btn-secondary" href="https://github.com/mdwalters/meowcord/issues/new">Create new GitHub issue</a>
+            <a class="btn btn-secondary" href="https://github.com/meowcord-dev/meowcord/issues/new">Create new GitHub issue</a>
         </div>
     </div>
 {/await}
